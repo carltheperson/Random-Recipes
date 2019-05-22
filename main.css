@@ -1,3 +1,104 @@
 body {
 	font-family: 'Open Sans', sans-serif;
+	background-color: #00AADD;
+}
+
+h1 {
+	text-align: center;
+	font-weight: normal;
+	font-size: 72px;
+	margin: -30px;
+}
+
+h2 {
+	text-align: center;
+	font-size: 42px;
+	margin-top: 80px;
+	color: #555;
+}
+
+#recipe-container{
+	background-color: white;
+	height: 70vh;
+	border-radius: 50px;
+	margin: 0 80px;
+}
+
+#logo {
+	width: 50%;
+	display: block;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+.btn {
+	color: black;
+	font-size: 60px;
+	font-weight: bold;
+	border: none;
+	background-color: #C4C4C4;
+	border-radius: 12px;
+	margin: 10px;
+
+	box-shadow: 13px 11px 21px -11px rgba(0,0,0,0.57);
+}
+
+.btns {
+	display: table;
+	margin: auto;
+}
+
+#backBtn{
+	display: table;
+	margin: auto;
+	margin-top: 80px;
+}
+
+#recipe-container{
+	background-color: white;
+	height: 70vh;
+	border-radius: 50px;
+	margin: 0 12%;
+	border: #555 2px solid;
+
+	position: relative;
+	box-shadow: 13px 11px 21px -11px rgba(0,0,0,0.57);
+}
+
+
+#recipeArea{
+	width: 90%;
+	height: 90%;
+	display: block;
+	margin: 30px auto;
+	resize: none;
+
+	overflow-y: scroll;
+
+	
+}
+
+
+#left {
+	width: 50px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 10px;
+}
+
+#right {
+	width: 50px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+
+	left: calc(100% - 50px);
+}
+
+#downloadIcon{
+	width: 50px;
+	position: absolute;
+	top: 10%;
+	left: calc(90% - 40px);
 }
