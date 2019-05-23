@@ -9,6 +9,8 @@ saveBtn.addEventListener("click", displayRecipe);
 right.addEventListener("click", goRight);
 left.addEventListener("click", goLeft);
 downloadIcon.addEventListener("click", download);
+saveBtn.addEventListener("click", saveRecipe);
+yourRecipesBtn.addEventListener("click", () => window.location.href = 'your_recipes.html');
 
 let recipeArray = [];
 // recipeArray[2] will give the current recipe
@@ -43,6 +45,24 @@ function goLeft() {
 	displayRecipe();
 }
 
+// Checks if recipe is already saved, and draws button differently
+function drawSaveBtn() {
+	let recipeStorage = JSON.parse(localStorage.getItem("recipes"));
+	if (recipeStorage) {
+		if (recipeStorage.includes(recipeArray[2])) {
+			saveBtn.style.backgroundColor = "#848484";
+			saveBtn.style.color = "#383838";
+			saveBtn.style.cursor = "default";
+			saveBtn.style.pointerEvents = "none";
+		} else {
+			saveBtn.style.backgroundColor = "#C4C4C4";
+			saveBtn.style.color = "black";
+			saveBtn.style.cursor = "pointer";
+			saveBtn.style.pointerEvents = "auto";
+		}
+	}
+}
+
 function displayRecipe() {
 	let index = recipeArray[2];
 	let recipe = "";
@@ -60,6 +80,8 @@ function displayRecipe() {
 	recipe += "</ol>";
 
 	recipeArea.innerHTML = recipe;
+
+	drawSaveBtn();
 }
 
 function download() {
@@ -73,7 +95,7 @@ function download() {
 	recipes[recipeArray[2]].directions.split("\n").forEach(function (direction, i) {recipe += `\n ${i + 1}. ` + direction});
 
 	// Creating and downloading file
-	let file = element = document.createElement('a');
+	let file = document.createElement('a');
 	file.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(recipe));
 	file.setAttribute('download', recipes[recipeArray[2]].title + ".txt");
 	file.style.display = 'none';
@@ -82,3 +104,26 @@ function download() {
 	document.body.removeChild(file);
 
 }
+
+// Local storage
+
+function saveRecipe() {
+	if (localStorage.getItem("recipes") === null) {
+		localStorage.setItem("recipes", JSON.stringify([recipeArray[2]]));
+	} else {
+		let recipeStorage = JSON.parse(localStorage.getItem("recipes"));
+		if (!recipeStorage.includes(recipeArray[2])){
+			recipeStorage.push(recipeArray[2]);
+		}
+		localStorage.setItem("recipes", JSON.stringify(recipeStorage));
+	}
+
+	drawSaveBtn();
+}
+
+
+
+
+
+
+
