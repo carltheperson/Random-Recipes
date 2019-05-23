@@ -17,6 +17,19 @@ h2 {
 	color: #555;
 }
 
+h3 {
+	font-size: 35px;
+}
+
+h4 {
+	font-size: 20px;
+	margin-bottom: 0;
+}
+
+li {
+	font-size: 18px;
+}
+
 #recipe-container{
 	background-color: white;
 	height: 70vh;
@@ -67,7 +80,7 @@ h2 {
 
 
 #recipeArea{
-	width: 90%;
+	width: 82%;
 	height: 90%;
 	display: block;
 	margin: 30px auto;
@@ -99,6 +112,6 @@ h2 {
 #downloadIcon{
 	width: 50px;
 	position: absolute;
-	top: 10%;
-	left: calc(90% - 40px);
+	top: 8%;
+	left: calc(85% - 40px);
 }

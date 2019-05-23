@@ -8,8 +8,10 @@ const yourRecipesBtn = document.getElementById("yourRecipesBtn");
 saveBtn.addEventListener("click", displayRecipe);
 right.addEventListener("click", goRight);
 left.addEventListener("click", goLeft);
+downloadIcon.addEventListener("click", download);
 
 let recipeArray = [];
+// recipeArray[2] will give the current recipe
 
 function makeNewRecipe() {
 	let newRecipe;
@@ -58,4 +60,25 @@ function displayRecipe() {
 	recipe += "</ol>";
 
 	recipeArea.innerHTML = recipe;
+}
+
+function download() {
+	// Creating recipe in text format
+	let recipe = recipes[recipeArray[2]].title + " Recipe\n\n";
+
+	recipe += "Ingredients";
+	recipes[recipeArray[2]].ingredients.split("\n").forEach(ingredient => recipe += "\n - " + ingredient);
+
+	recipe += "\n\nDirections";
+	recipes[recipeArray[2]].directions.split("\n").forEach(function (direction, i) {recipe += `\n ${i + 1}. ` + direction});
+
+	// Creating and downloading file
+	let file = element = document.createElement('a');
+	file.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(recipe));
+	file.setAttribute('download', recipes[recipeArray[2]].title + ".txt");
+	file.style.display = 'none';
+	document.body.appendChild(file);
+	file.click();
+	document.body.removeChild(file);
+
 }
