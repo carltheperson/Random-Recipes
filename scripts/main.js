@@ -13,8 +13,8 @@ saveBtn.addEventListener("click", saveRecipe);
 yourRecipesBtn.addEventListener("click", () => window.location.href = 'your_recipes.html');
 
 let recipeArray = [];
-// recipeArray[2] will give the current recipe
 
+// recipeArray[2] will give the current recipe
 function makeNewRecipe() {
 	let newRecipe;
 	do {
@@ -27,7 +27,7 @@ function makeRecipeArray() {
 	let newRecipe;
 	recipeArray = [];
 	for (let i = 0; i < 5; i++){
-		recipeArray.push(makeNewRecipe()); 
+		recipeArray.push(makeNewRecipe()); 	
 	}
 	displayRecipe();
 }
